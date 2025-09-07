@@ -18,7 +18,6 @@ A simple To-do list project with JS
 - 📅 **View tasks for Today & Upcoming**
 - ✔️ **Mark tasks as completed with a checkbox**
 - 🔍 **Search tasks easily**
-- 🎨 **Responsive blue-themed design**
 
 ---
 
