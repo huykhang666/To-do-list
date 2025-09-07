@@ -502,14 +502,15 @@ function addTaskForDate(dateKey) {
     }
 }
 
+
 // --- SEARCH POPUP ---
 const nodeSearch = document.getElementById("node-seach");
 
-// Tạo popup bằng JS
+// Tạo popup
 const searchPopup = document.createElement("div");
 searchPopup.id = "searchPopup";
 Object.assign(searchPopup.style, {
-    display: "none",
+    display: "none",          // ẩn lúc đầu
     position: "fixed",
     top: "0",
     left: "0",
@@ -518,14 +519,13 @@ Object.assign(searchPopup.style, {
     backgroundColor: "rgba(0,0,0,0.5)",
     justifyContent: "center",
     alignItems: "center",
-    zIndex: "1000",
-    display: "flex"
+    zIndex: "1000"
 });
 
 // Nội dung popup
 const popupContent = document.createElement("div");
 Object.assign(popupContent.style, {
-    backgroundColor: "#e0f0ff", // tone xanh nhạt
+    backgroundColor: "#e0f0ff",
     padding: "20px",
     borderRadius: "8px",
     width: "400px",
@@ -584,7 +584,7 @@ document.body.appendChild(searchPopup);
 
 // --- HIỆN / ẨN POPUP ---
 nodeSearch.addEventListener("click", () => {
-    searchPopup.style.display = "flex";
+    searchPopup.style.display = "flex"; // chỉ hiện khi click
     searchInput.value = "";
     searchResults.innerHTML = "";
     searchInput.focus();
@@ -624,3 +624,4 @@ searchInput.addEventListener("input", () => {
         });
     }
 });
+
