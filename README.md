@@ -33,6 +33,7 @@ git clone https://github.com/huykhang666/To-do-list.git
 Fully client-side, no server required.
 
 📂 Project Structure
+```bash
 To-do-list/
 │
 ├─ index.html          # Main HTML file
@@ -41,6 +42,7 @@ To-do-list/
 │   └─ icon/
 │       └─ themify-icons/ # Icons
 └─ to-do-list.js       # JS logic
+```
 🚀 Usage
 
 Click Add Task to create a new project
