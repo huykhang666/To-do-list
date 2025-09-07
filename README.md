@@ -26,3 +26,35 @@ A simple To-do list project with JS
 1. **Clone the repository**
 ```bash
 git clone https://github.com/huykhang666/To-do-list.git
+
+🚀 Usage
+
+Click Add Task to create a new project
+
+Enter project title and date
+
+Add targets if needed
+
+Save, and your task appears in Today or Upcoming
+
+Use Search to find tasks
+
+Mark tasks as completed with the checkbox
+
+✨ Technologies
+
+JavaScript (Vanilla)
+
+HTML5
+
+CSS3
+
+Themify Icons
+
+📌 Author
+
+Huy Khang
+
+GitHub: huykhang666
+
+Portfolio: (Add your portfolio link here)
