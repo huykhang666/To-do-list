@@ -26,7 +26,7 @@ A simple To-do list project with JS
 1. **Clone the repository**
 ```bash
 git clone https://github.com/huykhang666/To-do-list.git
-
+```
 
 2.Open index.html in your browser
 
