@@ -27,6 +27,20 @@ A simple To-do list project with JS
 ```bash
 git clone https://github.com/huykhang666/To-do-list.git
 
+
+2.Open index.html in your browser
+
+Fully client-side, no server required.
+
+📂 Project Structure
+To-do-list/
+│
+├─ index.html          # Main HTML file
+├─ style/
+│   ├─ style.css       # Styles
+│   └─ icon/
+│       └─ themify-icons/ # Icons
+└─ to-do-list.js       # JS logic
 🚀 Usage
 
 Click Add Task to create a new project
