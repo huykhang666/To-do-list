@@ -1,9 +1,19 @@
 window.onload = function() {
+    if (localStorage.getItem("loggedIn") !== "true") {
+        window.location.href = "login.html";
+    }
     logoHome.click();
     renderToday();  
     renderUpcoming();
     renderTasks();
 };
+
+document.getElementById("logout-btn").addEventListener("click", function() {
+  localStorage.removeItem("loggedIn"); 
+  alert("Bạn đã đăng xuất!");
+  window.location.href = "login.html";
+});
+
 // Ẩn sidebar
 const sidebar = document.getElementById("sidebar");
 const toggleBtn = document.getElementById("toggle-sidebar");
@@ -27,7 +37,6 @@ logoHome.addEventListener('click',function() {
     var homeDiv = document.getElementById('home');
     homeDiv.style.display = 'flex';
 });
-
 
 // Active option
 var menuItems = document.querySelectorAll('#sidebar ul li');
@@ -152,17 +161,18 @@ function renderToday() {
         todayTaskList.appendChild(li);
 
         var del = document.createElement('button');
-        del.textContent = 'delete';
+        del.textContent = '🗑️Delete';
         del.style.float='right';
         del.className='del-btn';
 
-        del.style.backgroundColor = "#398df4";
+        del.style.backgroundColor = "#f44336";
         del.style.color = "white";
         del.style.border = "none";
-        del.style.borderRadius = '4px';
-        del.style.padding = '4px';
+        del.style.borderRadius = '8px';
+        del.style.padding = '6px 12px';
         del.style.boxShadow = '0 4px 10px rgba(0,0,0,0.3)';
         del.style.cursor = 'pointer';
+        del.style.fontSize = '16px';
 
 
         (function(index,liElement) {
@@ -182,16 +192,18 @@ function renderToday() {
         li.appendChild(del);
 
         var updateBtn = document.createElement('button');
-        updateBtn.textContent = 'update';
+        updateBtn.textContent = '✏️Update';
         updateBtn.style.float='right';
         updateBtn.style.marginRight='5px';
-        updateBtn.style.backgroundColor = "#398df4";
+        updateBtn.style.backgroundColor = "#4caf50";
         updateBtn.style.color = "white";
         updateBtn.style.border = "none";
-        updateBtn.style.borderRadius = '4px';
-        updateBtn.style.padding = '4px';
+        updateBtn.style.borderRadius = '8px';
+        updateBtn.style.padding = '6px 12px';
         updateBtn.style.cursor = 'pointer';
         updateBtn.style.boxShadow = '0 4px 10px rgba(0,0,0,0.3)';
+        updateBtn.style.fontSize = '16px';
+
 
 
         (function(index){
@@ -239,16 +251,34 @@ function loadProjectToForm(index){
 //Show Detail
 
 function showProjectDetail(index) {
-    var project = projects[index]
+    var project = projects[index];
     var detailDiv = document.getElementById('project-detail');
-    detailDiv.innerHTML = '<h3>'+ project.date + '</h3>'
+    detailDiv.innerHTML = "";
 
-    for(var i=0;i<project.targets.length;i++) {
-        var t = document.createElement('div');
-        t.textContent ='Mục tiêu ' + (i+1) + ': ' + project.targets[i];
-        detailDiv.appendChild(t);
-    }
+    // Tạo khung card
+    var card = document.createElement("div");
+    card.className = "task-detail";
+
+    // Header
+    var header = document.createElement("div");
+    header.className = "task-header";
+    header.innerHTML = `<h3>${project.name || "Project"}</h3>
+                        <span class="task-date">📅 ${project.date}</span>`;
+    card.appendChild(header);
+
+    // Body
+    var body = document.createElement("div");
+    body.className = "task-body";
+    project.targets.forEach((target, i) => {
+        var t = document.createElement("p");
+        t.innerHTML = `🎯 <strong>Mục tiêu ${i+1}:</strong> ${target}`;
+        body.appendChild(t);
+    });
+    card.appendChild(body);
+    // Thêm card vào detailDiv
+    detailDiv.appendChild(card);
 }
+
 
 //Add project
 
@@ -349,7 +379,7 @@ function renderUpcoming() {
         projectsByDate[dateKey].push(project);
     }
 
-    // Lấy danh sách ngày >= hôm nay, sắp xếp
+    // Lấy danh sách ngày hôm nay, sắp xếp
     var upcomingDates = [];
     for (var key in projectsByDate) {
         var parts = key.split("-");
@@ -372,7 +402,7 @@ function renderUpcoming() {
 
         var tasksOfDay = projectsByDate[dateKey2];
 
-        // Nhóm ngày (1 box chứa header + tasks)
+        // Nhóm ngày 
         var dayGroup = document.createElement("li");
         dayGroup.className = "day-group";
         dayGroup.style.listStyle = "none";
@@ -394,6 +424,7 @@ function renderUpcoming() {
         var dayTasks = document.createElement("ul");
         dayTasks.className = "day-task-list";
         dayTasks.style.marginTop = "24px";
+        dayTasks.style.width = "80%";
 
         for (var k = 0; k < tasksOfDay.length; k++) {
             var project = tasksOfDay[k];
@@ -445,17 +476,11 @@ function renderUpcoming() {
 
         // Nút Add task
         var addTaskLi = document.createElement("li");
-        addTaskLi.className = "add-task";
+        addTaskLi.className = "add-task-upcoming";
         addTaskLi.style.listStyle = "none";
         var addBtn = document.createElement("button");
+        addBtn.className = "add-task-upcoming-1";
         addBtn.textContent = "+ Add task";
-        addBtn.style.border = "none";
-        addBtn.style.borderRadius = "4px";
-        addBtn.style.padding = "4px";
-        addBtn.style.marginTop = "20px";
-        addBtn.style.backgroundColor = "#006afe";
-        addBtn.style.color = "#fff";
-        addBtn.style.boxShadow = "0 4px 10px rgba(0,0,0,0.3)";
 
         addBtn.addEventListener("click", (function(dateKey) {
             return function() {
@@ -501,127 +526,4 @@ function addTaskForDate(dateKey) {
         renderUpcoming();
     }
 }
-
-
-// --- SEARCH POPUP ---
-const nodeSearch = document.getElementById("node-seach");
-
-// Tạo popup
-const searchPopup = document.createElement("div");
-searchPopup.id = "searchPopup";
-Object.assign(searchPopup.style, {
-    display: "none",          // ẩn lúc đầu
-    position: "fixed",
-    top: "0",
-    left: "0",
-    width: "100%",
-    height: "100%",
-    backgroundColor: "rgba(0,0,0,0.5)",
-    justifyContent: "center",
-    alignItems: "center",
-    zIndex: "1000"
-});
-
-// Nội dung popup
-const popupContent = document.createElement("div");
-Object.assign(popupContent.style, {
-    backgroundColor: "#e0f0ff",
-    padding: "20px",
-    borderRadius: "8px",
-    width: "400px",
-    maxHeight: "80%",
-    overflowY: "auto",
-    display: "flex",
-    flexDirection: "column",
-    position: "relative"
-});
-searchPopup.appendChild(popupContent);
-
-// Header + nút đóng
-const headerDiv = document.createElement("div");
-Object.assign(headerDiv.style, {
-    display: "flex",
-    justifyContent: "space-between",
-    alignItems: "center",
-    marginBottom: "12px"
-});
-const title = document.createElement("h3");
-title.textContent = "Search Task";
-title.style.margin = "0";
-const closeBtn = document.createElement("span");
-closeBtn.textContent = "×";
-Object.assign(closeBtn.style, {
-    cursor: "pointer",
-    fontSize: "20px",
-    fontWeight: "bold"
-});
-headerDiv.appendChild(title);
-headerDiv.appendChild(closeBtn);
-popupContent.appendChild(headerDiv);
-
-// Input search
-const searchInput = document.createElement("input");
-Object.assign(searchInput.style, {
-    padding: "8px",
-    borderRadius: "4px",
-    border: "1px solid #aaa",
-    marginBottom: "12px"
-});
-searchInput.placeholder = "Enter task title...";
-popupContent.appendChild(searchInput);
-
-// Kết quả
-const searchResults = document.createElement("ul");
-Object.assign(searchResults.style, {
-    listStyle: "none",
-    padding: "0",
-    margin: "0"
-});
-popupContent.appendChild(searchResults);
-
-// Thêm popup vào body
-document.body.appendChild(searchPopup);
-
-// --- HIỆN / ẨN POPUP ---
-nodeSearch.addEventListener("click", () => {
-    searchPopup.style.display = "flex"; // chỉ hiện khi click
-    searchInput.value = "";
-    searchResults.innerHTML = "";
-    searchInput.focus();
-});
-
-closeBtn.addEventListener("click", () => {
-    searchPopup.style.display = "none";
-});
-
-// Click ngoài popup-content tắt popup
-searchPopup.addEventListener("click", (e) => {
-    if (e.target === searchPopup) {
-        searchPopup.style.display = "none";
-    }
-});
-
-// --- SEARCH LOGIC ---
-searchInput.addEventListener("input", () => {
-    const keyword = searchInput.value.toLowerCase();
-    searchResults.innerHTML = "";
-
-    const filtered = projects.filter(p => p.title.toLowerCase().includes(keyword));
-
-    if (filtered.length === 0) {
-        const li = document.createElement("li");
-        li.textContent = "No results found";
-        searchResults.appendChild(li);
-    } else {
-        filtered.forEach(p => {
-            const li = document.createElement("li");
-            li.textContent = p.title + " (" + p.date + ")";
-            Object.assign(li.style, {padding: "4px 0", cursor: "pointer"});
-            li.addEventListener("click", () => {
-                alert("Task: " + p.title + "\nDate: " + p.date);
-            });
-            searchResults.appendChild(li);
-        });
-    }
-});
 

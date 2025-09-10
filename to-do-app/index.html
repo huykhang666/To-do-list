@@ -4,8 +4,8 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>To-do-list</title>
-    <link rel="stylesheet" href="style/style.css">
-    <link rel="stylesheet" href="style/icon/themify-icons-font/themify-icons/themify-icons.css">
+    <link rel="stylesheet" href="/style/style.css">
+    <link rel="stylesheet" href="/style/icon/themify-icons-font/themify-icons/themify-icons.css">
     <link rel="icon" type="image/x-icon" href="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSfGU4Lr9P-2RTvWJQcu0F8mqlPHYHTdNKeIA&s">
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
 </head>
@@ -25,11 +25,12 @@
         <!-- Lựa chọn -->
             <ul class="option">
                 <li id="node-add-task"><i class="ti-plus"></i> Add Task</li>
-                <li id="node-seach"><i class="ti-search"></i> Search</li>
-                <li id="node-today"><i class="ti-receipt"></i> Today</li>
-                <li id="node-upcoming"><i class="ti-alarm-clock"></i> Upcoming</li>
+                <li id="node-seach">🔍 Search</li>
+                <li id="node-today">📅 Today</li>
+                <li id="node-upcoming">⏰ Upcoming</li>
                 <li id="node-completed" style="display: none;"><i class="ti-check"></i> Completed</li>
             </ul>
+            <button id="logout-btn">Đăng xuất</button>
         </div>
 
         <!-- End Sidebar -->
@@ -40,22 +41,18 @@
                 <p>Cảm ơn bạn đã sử dụng app của chúng mình! 💖</p>
                 <p>Chúc bạn một ngày làm việc hiệu quả và vui vẻ! 🎉</p>
             </div>
-
             <!-- Add task -->
             <div class="content-item" id="addTask" style="display: none;">
                 <div >
                     <h2>Creat Project</h2>
                     <!-- //My project -->
                     <input type="text" id="task-title" placeholder="Name Project">
-
                     <!-- //Day -->
                     <input type="date" id="task-date" />
-
                     <!-- Mục tiêu (Target) -->
                     <div id="target-container">
                         <div class="target-item">
-                            <input type="text" class="target-input" placeholder="Target">
-                        
+                            <input type="text" class="target-input" placeholder="Target"> 
                         </div>
                         <p class="add-target-btn">Add target</p>
                     </div>
@@ -75,9 +72,9 @@
             <!-- Block Today -->
             <div class="content-item" id="today">
                 <h2 class="title-today">Today</h2>
-                <p id="today-count"></p>
+                <p id="today-count" style="font-size: 20px; margin-left: 4px;"></p>
                 <ul id="today-task-list"></ul>
-                <div id="project-detail" style="margin-top: 20px;"></div>
+                <div id="project-detail"></div>
                 <button id="add-task-second">+ Add task</button>
             </div>
 
@@ -100,5 +97,5 @@
     </div>
    
 </body>
-<script src="to-do-list.js"></script>
+<script src="/js/to-do-list.js"></script>
 </html>
