@@ -36,12 +36,17 @@ Fully client-side, no server required.
 ```bash
 To-do-list/
 │
-├─ index.html          # Main HTML file
+├─ index.html # Trang chính (danh sách công việc)
+├─ login.html # Trang đăng nhập
+├─ register.html # Trang đăng ký
 ├─ style/
-│   ├─ style.css       # Styles
-│   └─ icon/
-│       └─ themify-icons/ # Icons
-└─ to-do-list.js       # JS logic
+│ ├─ style.css # File CSS chính
+│ └─ icon/
+│ └─ themify-icons/ # Thư viện icon
+└─ js/
+├─ to-do-list.js # Logic quản lý danh sách công việc
+├─ login.js # Logic đăng nhập
+└─ register.js # Logic đăng ký
 ```
 🚀 Usage
 
