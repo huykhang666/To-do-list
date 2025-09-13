@@ -3,7 +3,7 @@ A simple To-do list project with JS
 
 # My Project
 
-👉 [Xem Demo tại đây](https://todoapp-28.vercel.app/](https://todoapp-khang.vercel.app/login.html)
+👉 [Xem Demo tại đây]((https://to-do-list-ashy-seven-73.vercel.app/))
 
 # 📝 To-do List App
 
