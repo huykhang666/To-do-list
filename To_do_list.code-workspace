@@ -1,0 +1,16 @@
+{
+	"folders": [
+		{
+			"path": "."
+		},
+		{
+			"path": "../../../OOP và CTDL"
+		},
+		{
+			"path": "../../../ThietKeWeb"
+		}
+	],
+	"settings": {
+		"liveServer.settings.multiRootWorkspaceName": "To_do_list"
+	}
+}

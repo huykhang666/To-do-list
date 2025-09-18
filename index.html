@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>To-do-list</title>
+    <link rel="stylesheet" href="/style/style.css">
+    <link rel="stylesheet" href="/style/themify-icons/themify-icons.css">
+    <link rel="icon" type="image/x-icon" href="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSfGU4Lr9P-2RTvWJQcu0F8mqlPHYHTdNKeIA&s">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
+</head>
+<body>
+    <div id="layout">
+        <!-- Start Sidebar -->
+        <!-- Trang chủ và ẩn sidebar -->
+        <div id="sidebar">
+            <ul class="information">
+                <li id="nodeHome"><img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSfGU4Lr9P-2RTvWJQcu0F8mqlPHYHTdNKeIA&s" alt=""></li>
+                <ul class="icon-ifm">
+                    <li ><i class="icon-bell ti-bell"></i></li>
+                    <li id="toggle-sidebar"><i class="ti-layout-sidebar-left"></i></li>
+                </ul>
+            </ul>
+        <!-- Lựa chọn -->
+            <ul class="option">
+                <li id="node-add-task"><i class="ti-plus"></i> Add Task</li>
+                <li id="node-seach">🔍 Search</li>
+                <li id="node-today">📅 Today</li>
+                <li id="node-upcoming">⏰ Upcoming</li>
+                <li id="node-completed" style="display: none;"><i class="ti-check"></i> Completed</li>
+            </ul>
+            <button id="logout-btn">Đăng xuất</button>
+        </div>
+
+        <!-- End Sidebar -->
+        <div id="content">
+        <!-- Giao diện trang chủ -->
+            <div class="content-item" id="home">
+                <h1>Chào Mừng Đến Với TO-DO-LIST</h1>
+                <p>Cảm ơn bạn đã sử dụng app của chúng mình! 💖</p>
+                <p>Chúc bạn một ngày làm việc hiệu quả và vui vẻ! 🎉</p>
+            </div>
+            <!-- Add task -->
+            <div class="content-item" id="addTask" style="display: none;">
+                <div >
+                    <h2>Creat Project</h2>
+                    <!-- //My project -->
+                    <input type="text" id="task-title" placeholder="Name Project">
+                    <!-- //Day -->
+                    <input type="date" id="task-date" />
+                    <!-- Mục tiêu (Target) -->
+                    <div id="target-container">
+                        <div class="target-item">
+                            <input type="text" class="target-input" placeholder="Target"> 
+                        </div>
+                        <p class="add-target-btn">Add target</p>
+                    </div>
+
+                    <!-- //Creat and Cancel -->
+                    <button id="cancel-task-btn">Cancel</button>
+                    <button id="add-task-btn">Creat</button>
+
+                </div>
+            </div>
+
+            <!-- Seach -->
+            <div class="content-item" id="search">
+            
+            </div>
+
+            <!-- Block Today -->
+            <div class="content-item" id="today">
+                <h1 class="title-today">Today</h1>
+                <p id="today-count" style="font-size: 20px; margin-left: 4px;"></p>
+                <ul id="today-task-list"></ul>
+                <div id="project-detail"></div>
+                <button id="add-task-second">+ Add task</button>
+            </div>
+
+            <!-- Block Upcoming -->
+            <div class="content-item" id="upcoming">
+                <h1 class="title-upcoming">Upcoming</h1>
+                <div id="week-bar">
+                    <div class="day">Mon</div>
+                    <div class="day">Tue</div>
+                    <div class="day">Wed</div>
+                    <div class="day">Thu</div>
+                    <div class="day">Fri</div>
+                    <div class="day">Sat</div>
+                    <div class="day">Sun</div>
+            </div>
+            <ul id="upcoming-task-list"></ul>
+            </div>
+
+        </div>
+    </div>
+   
+</body>
+<script src="/js/to-do-list.js"></script>
+</html>
