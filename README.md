@@ -10,7 +10,8 @@ A simple To-do list project with JS
 > A **modern To-do List web app** built with **JavaScript, HTML, and CSS** to help you manage your tasks and daily schedule efficiently.
 
 ---
-
+# Live Demo
+[Click để xem app](https://chipper-travesseiro-a41fb0.netlify.app/)
 ## 🌟 Features
 
 - ✅ **Add, update, and delete tasks**
